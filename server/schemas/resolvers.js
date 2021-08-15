@@ -31,6 +31,7 @@ const resolvers = {
               throw new AuthenticationError('User not found with this email or password');
           }
           const token = signToken(user);
+
           return {token, user};    
       },
      
@@ -41,7 +42,6 @@ const resolvers = {
                 { $push: { savedBooks: bookData } },
                 { new: true }
               );
-      
               return updatedUser;
             }     
           throw new AuthenticationError('Please log in');
